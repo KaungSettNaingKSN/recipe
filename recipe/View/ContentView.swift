@@ -10,15 +10,19 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var model: RecipeModel
     var body: some View {
-        NavigationView{
-            List(model.recipes){ recipe in
-                NavigationLink(destination: RecipeDetail(recipe: recipe).toolbar(.hidden, for: .tabBar){
+        NavigationStack{
+            List(model.recipes) { recipe in
+                NavigationLink {
+                    RecipeDetail(recipe: recipe)
+                     
+                } label: {
                     HStack{
                         Image(recipe.image).resizable().scaledToFill().frame(width: 50, height: 50).clipped().cornerRadius(8)
                         Text(recipe.name)
                     }
                 }
-            }.navigationTitle("Recipe")
+                
+            }
         }
     }
 }

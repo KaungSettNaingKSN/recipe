@@ -50,6 +50,7 @@ struct RecipeDetail: View {
             }
             
         }
+        .toolbar(.hidden, for: .tabBar)
         .navigationBarTitle(recipe.name)
     }
 }
